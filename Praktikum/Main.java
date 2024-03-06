@@ -3,7 +3,7 @@ package Praktikum;
 import java.util.ArrayList;
 
 
-public class PerpusMain {
+public class Main {
     public static void main(String[] args) {
         String[] genre = {"Teknologi","Filsafat","Sejarah","Agama","Psikologi","Politik","Fiksi"};
         String[][] infoBuku = {
@@ -52,8 +52,12 @@ public class PerpusMain {
         ArrayList<Buku> koleksiBuku = new ArrayList<>();
 
         for (int i = 0; i < infoBuku.length; i++) {
-            int j = i % 7;
-            koleksiBuku.add(new Buku(genre[j], infoBuku[i][0], infoBuku[i][1]));
+            int j = i % genre.length;
+            Buku bukuBaru = new Buku();
+            bukuBaru.setKategoriBuku(genre[j]);
+            bukuBaru.setJudulBuku(infoBuku[i][0]);
+            bukuBaru.setPenulisBuku(infoBuku[i][1]);
+            koleksiBuku.add(bukuBaru);
         }
 
         for (String kategori : genre) {
