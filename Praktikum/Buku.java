@@ -21,7 +21,7 @@ public class Buku {
         System.out.println("ada di kategori " + kategoriBuku);
     }
 
-    public void displaykategori(String kategoriBuku){
+    public void displayKategori(String kategoriBuku){
         if (kategoriBuku == this.kategoriBuku){
             displayInfo();
         }
