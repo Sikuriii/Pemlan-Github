@@ -1,11 +1,17 @@
-package Praktikum;
-
-import java.util.ArrayList;
+package Praktikum.Tugas1;
 
 
 public class Main {
     public static void main(String[] args) {
-        String[] genre = {"Teknologi","Filsafat","Sejarah","Agama","Psikologi","Politik","Fiksi"};
+        Buku.Tipe[] genre = {
+            Buku.Tipe.TEKNOLOGI,
+            Buku.Tipe.FILSAFAT,
+            Buku.Tipe.SEJARAH,
+            Buku.Tipe.AGAMA,
+            Buku.Tipe.PSIKOLOGI,
+            Buku.Tipe.POLITIK,
+            Buku.Tipe.FIKSI,
+        };
         String[][] infoBuku = {
             {"The Innovators: How a Group of Hackers, Geniuses, and Geeks Created the Digital Revolution", "Walter Isaacson"},
             {"Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", "Ashlee Vance"},
@@ -49,22 +55,16 @@ public class Main {
             {"The Catcher in the Rye", "J.D. Salinger"},
             {"One Hundred Years of Solitude", "Gabriel García Márquez"}
         };
-        ArrayList<Buku> koleksiBuku = new ArrayList<>();
+
+        Perpustakaan perpustakaan = new Perpustakaan("UB");
 
         for (int i = 0; i < infoBuku.length; i++) {
             int j = i % genre.length;
-            Buku bukuBaru = new Buku();
-            bukuBaru.setKategoriBuku(genre[j]);
-            bukuBaru.setJudulBuku(infoBuku[i][0]);
-            bukuBaru.setPenulisBuku(infoBuku[i][1]);
-            koleksiBuku.add(bukuBaru);
+            Buku bukuBaru = new Buku(infoBuku[i][0], infoBuku[i][1], genre[j]);
+            perpustakaan.tambahBuku(bukuBaru);
         }
 
-        for (String kategori : genre) {
-            for (Buku buku : koleksiBuku) {
-                buku.displaykategori(kategori);
-            }
-            System.out.println("========================");
-        }
+        perpustakaan.displayInfoBuku();
+        perpustakaan.displaySemuaBuku();
     }
 }
